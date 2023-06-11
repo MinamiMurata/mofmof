@@ -6,11 +6,11 @@ ja:
     attributes:
       property:
         name: 物件名
-        rent: 家賃
+        rent: 賃料
         address: 住所
         age: 築年数
         note: 備考
       access:
-        line: 路線
-        station: 駅
+        line: 路線名
+        station: 駅名
         time: 徒歩分数

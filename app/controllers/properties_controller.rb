@@ -7,7 +7,7 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
-    2.times { @property.accesses.new }
+    2.times { @property.accesses.build }
   end
 
   def create
@@ -28,14 +28,18 @@ class PropertiesController < ApplicationController
   end
 
   def update
+    @property.accesses.destroy if @property.accesses.empty?
     if @property.update(property_params)
-      redirect_to properties_path, notice: "物件を編集しました！"
+      Access.where("line=='' OR station=='' OR time == ''").each { |a| a.destroy }
+      redirect_to properties_path, notice: "物件情報を編集しました！"
     else
       render :edit
     end
   end
 
   def destroy
+    @property.destroy
+    redirect_to properties_path, notice: "物件情報を削除しました！"
   end
 
   private
