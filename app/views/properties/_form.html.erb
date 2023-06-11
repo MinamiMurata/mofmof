@@ -1,0 +1,33 @@
+<%= form_with(model: @property, local: true) do |form| %>
+    <div><%= form.label :name %></div>
+    <div><%= form.text_field :name %></div>
+
+    <div><%= form.label :rent %></div>
+    <div><%= form.text_field :rent %>円</div>
+
+    <div><%= form.label :address %></div>
+    <div><%= form.text_field :address %></div>
+
+    <div><%= form.label :age %></div>
+    <div><%= form.text_field :age %>年</div>
+
+    <div><%= form.label :note %></div>
+    <div><%= form.text_area :note %></div>
+    <hr>
+
+  <%= form.fields_for :accesses do |access| %>
+    <h3>最寄り駅</h3>
+
+    <div><%= access.label :line %></div>
+    <div><%= access.text_field :line %></div>
+
+    <div><%= access.label :station %></div>
+    <div><%= access.text_field :station %></div>
+
+    <div><%= access.label :time %></div>
+    <div><%= access.text_field :time %>分</div>
+
+  <% end %>
+
+  <div class="mt-1"><%= form.submit %></div>
+<% end %>
